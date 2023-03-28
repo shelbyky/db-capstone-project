@@ -68,15 +68,35 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `LittleLemonDB`.`MenuItems`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`MenuItems` (
+  `MenuItemsID` INT NOT NULL,
+  `Course` VARCHAR(255) NULL,
+  `Starter` VARCHAR(255) NULL,
+  `Dessert` VARCHAR(255) NULL,
+  `Drink` VARCHAR(255) NULL,
+  `Side` VARCHAR(255) NULL,
+  PRIMARY KEY (`MenuItemsID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `LittleLemonDB`.`Menu`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Menu` (
-  `MenuItemID` INT NOT NULL,
+  `MenuID` INT NOT NULL,
+  `MenuItemsID` INT NOT NULL,
   `Name` VARCHAR(255) NULL,
   `Cuisine` VARCHAR(255) NULL,
-  `Type` VARCHAR(255) NULL,
-  `Price` INT NULL,
-  PRIMARY KEY (`MenuItemID`))
+  `Price` DECIMAL(10,2) NULL,
+  PRIMARY KEY (`MenuID`),
+  INDEX `Menu.MenuItemsID_idx` (`MenuItemsID` ASC) VISIBLE,
+  CONSTRAINT `Menu.MenuItemsID`
+    FOREIGN KEY (`MenuItemsID`)
+    REFERENCES `LittleLemonDB`.`MenuItems` (`MenuItemsID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -85,21 +105,21 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Orders` (
   `OrderID` INT NOT NULL,
-  `MenuItemID` INT NULL,
-  `Quantity` INT NULL,
-  `TotalCost` INT NULL,
+  `MenuID` INT NOT NULL,
+  `Quantity` INT NOT NULL,
+  `TotalCost` DECIMAL(10,2) NULL,
   `CustomerID` INT NOT NULL,
   `StaffID` INT NULL,
   `BookingID` INT NULL,
   `OrderDate` DATE NULL,
   PRIMARY KEY (`OrderID`),
-  INDEX `MenuItemID_idx` (`MenuItemID` ASC) VISIBLE,
+  INDEX `MenuItemID_idx` (`MenuID` ASC) VISIBLE,
   INDEX `CustomerID_idx` (`CustomerID` ASC) VISIBLE,
   INDEX `StaffID_idx` (`StaffID` ASC) VISIBLE,
   INDEX `BookingID_idx` (`BookingID` ASC) VISIBLE,
-  CONSTRAINT `Orders.MenuItemID`
-    FOREIGN KEY (`MenuItemID`)
-    REFERENCES `LittleLemonDB`.`Menu` (`MenuItemID`)
+  CONSTRAINT `Orders.MenuID`
+    FOREIGN KEY (`MenuID`)
+    REFERENCES `LittleLemonDB`.`Menu` (`MenuID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `Orders.CustomerID`
