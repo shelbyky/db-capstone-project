@@ -18,7 +18,7 @@ USE `LittleLemonDB` ;
 -- Table `LittleLemonDB`.`Customers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Customers` (
-  `CustomerID` INT NOT NULL,
+  `CustomerID` INT NOT NULL AUTO_INCREMENT,
   `FullName` VARCHAR(255) NOT NULL,
   `ContactNum` VARCHAR(45) NOT NULL,
   `Email` VARCHAR(255) NULL,
@@ -32,7 +32,7 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`Staff`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Staff` (
-  `StaffID` INT NOT NULL,
+  `StaffID` INT NOT NULL AUTO_INCREMENT,
   `FullName` VARCHAR(255) NULL,
   `Role` VARCHAR(45) NULL,
   `Salary` INT NULL,
@@ -45,7 +45,7 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`Bookings`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Bookings` (
-  `BookingID` INT NOT NULL,
+  `BookingID` INT NOT NULL AUTO_INCREMENT,
   `Date` DATE NOT NULL,
   `Time` TIME NOT NULL,
   `TableNum` INT NULL,
@@ -71,7 +71,7 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`MenuItems`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`MenuItems` (
-  `MenuItemsID` INT NOT NULL,
+  `MenuItemsID` INT NOT NULL AUTO_INCREMENT,
   `Course` VARCHAR(255) NULL,
   `Starter` VARCHAR(255) NULL,
   `Dessert` VARCHAR(255) NULL,
@@ -85,7 +85,7 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`Menu`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Menu` (
-  `MenuID` INT NOT NULL,
+  `MenuID` INT NOT NULL AUTO_INCREMENT,
   `MenuItemsID` INT NOT NULL,
   `Name` VARCHAR(255) NULL,
   `Cuisine` VARCHAR(255) NULL,
@@ -104,7 +104,7 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`Orders`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Orders` (
-  `OrderID` INT NOT NULL,
+  `OrderID` INT NOT NULL AUTO_INCREMENT,
   `MenuID` INT NOT NULL,
   `Quantity` INT NOT NULL,
   `TotalCost` DECIMAL(10,2) NULL,
@@ -144,7 +144,7 @@ ENGINE = InnoDB;
 -- Table `LittleLemonDB`.`Delivery`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LittleLemonDB`.`Delivery` (
-  `DeliveryID` INT NOT NULL,
+  `DeliveryID` INT NOT NULL AUTO_INCREMENT,
   `OrderID` INT NULL,
   `Status` VARCHAR(45) NULL,
   `DeliveryDate` DATE NULL,
