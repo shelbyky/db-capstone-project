@@ -1,13 +1,3 @@
-INSERT INTO Menu (MenuID, MenuItemsID, Name, Cuisine, Price)
-VALUES
-(1, 1, 'Gia sas', 'Greek', 82),
-(2, 2, 'Kafenio', 'Greek', 51),
-(3, 3, 'Pomodoro fresco', 'Italian', 85),
-(4, 4, 'Salsa di pomodoro ', 'Italian', 83),
-(5, 5, 'Tavuk', 'Turkish', 42),
-(6, 6, 'Pirzola', 'Turkish', 77);
-
-
 INSERT INTO MenuItems (MenuItemsID, Course, Starter, Dessert, Drink, Side)
 VALUES
 (1, 'Greek salad', 'Olives', 'Greek yoghurt', 'Athens White wine', 'Tapas'),
@@ -16,6 +6,16 @@ VALUES
 (4, 'Carbonara', 'Tomato bread', 'Affogato', 'Roma Red wine', 'Focaccia'),
 (5, 'Kabasa', 'Falafel', 'Turkish yoghurt', 'Ankara White Wine', 'Meatballs'),
 (6, 'Shwarma', 'Hummus', 'Baklava', 'Turkish Coffee', 'Fries');
+
+
+INSERT INTO Menu (MenuID, MenuItemsID, Name, Cuisine, Price)
+VALUES
+(1, 1, 'Gia sas', 'Greek', 82),
+(2, 2, 'Kafenio', 'Greek', 51),
+(3, 3, 'Pomodoro fresco', 'Italian', 85),
+(4, 4, 'Salsa di pomodoro ', 'Italian', 83),
+(5, 5, 'Tavuk', 'Turkish', 42),
+(6, 6, 'Pirzola', 'Turkish', 77);
 
 
 INSERT INTO Staff (StaffID, FullName, Role, Salary, ContactNum)
@@ -40,18 +40,12 @@ VALUES
 (10, 'Harvey Boyd', '3516492057', 'harveyb@gmail.com', '1923 Vine Street, Chicago, IL', 60631);
 
 
-INSERT INTO Delivery (DeliveryID, OrderID, Status, DeliveryDate, DeliveryTime)
-VALUES
-(1, 2, 'Delivered', '2022-11-12', '7:00:00'),
-(2, 10, 'Delivered', '2022-10-19', '8:00:00');
-
-
 INSERT INTO Bookings (BookingID, Date, Time, TableNum, CustomerID, StaffID)
 VALUES
 (1, '2022-10-10', '5:00:00', 5, 1, 2),
 (2, '2022-11-12', '6:00:00', 3, 3, 2),
 (3, '2022-10-11', '7:00:00', 2, 2, 5),
-(4, '2022-10-13', '8:00:00', 2, 2, 1),
+(4, '2022-10-13', '8:00:00', 2, 1, 1),
 (5, '2022-10-14', '9:00:00', 19, 10, 2),
 (6, '2022-10-15', '10:00:00', 20, 7, 4),
 (7, '2022-10-16', '11:00:00', 19, 10, 5),
@@ -155,7 +149,7 @@ VALUES
 (1, 6, 2, 216, 1, 2, 1, '2022-10-10'),
 (2, 2, 2, 211, 3, 4, 2, '2022-11-12'),
 (3, 2, 1, 259, 2, 5, 3, '2022-10-11'),
-(4, 1, 4, 232, 2, 2, 4, '2022-10-13'),
+(4, 1, 4, 232, 1, 2, 4, '2022-10-13'),
 (5, 6, 4, 133, 10, 2, 5, '2022-10-14'),
 (6, 3, 1, 104, 7, 1, 6, '2022-10-15'),
 (7, 4, 1, 205, 10, 2, 7, '2022-10-16'),
@@ -252,3 +246,9 @@ VALUES
 (98, 4, 3, 290, 2, 5, 98, '2023-01-15'),
 (99, 1, 1, 117, 2, 1, 99, '2023-01-16'),
 (100, 6, 2, 96, 6, 2, 100, '2023-01-17');
+
+
+INSERT INTO Delivery (DeliveryID, OrderID, Status, DeliveryDate, DeliveryTime)
+VALUES
+(1, 2, 'Delivered', '2022-11-12', '7:00:00'),
+(2, 10, 'Delivered', '2022-10-19', '8:00:00');
